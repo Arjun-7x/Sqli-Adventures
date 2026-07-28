@@ -60,6 +60,7 @@ The response came back with the unreleased product included — something a norm
 ## Why this matters
 
 This is the textbook example of why string concatenation and SQL don't mix. The fix is straightforward — parameterized queries (prepared statements) keep user input as pure data, so no matter what you type into that category field, it can never change the shape of the query itself.
+**_INKA UNDHI CHESTHA 😘TUMBU_**
 
 
 
