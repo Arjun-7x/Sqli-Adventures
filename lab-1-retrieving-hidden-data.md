@@ -57,10 +57,13 @@ SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
 
 The response came back with the unreleased product included — something a normal user was never supposed to see. The injection worked exactly as intended: it didn't just add data to the query, it rewrote its logic.
 
-## Why this matters
+## Takeaway
+Unsanitized input let user data rewrite the query's logic. Parameterized queries fix this by always treating input as data, never as SQL.
 
-This is the textbook example of why string concatenation and SQL don't mix. The fix is straightforward — parameterized queries (prepared statements) keep user input as pure data, so no matter what you type into that category field, it can never change the shape of the query itself.<br>
-**_INKA UNDHI CHESTHA 😘TUMBU_**
+---
+
+This adventure was okay, but the levels of excitement are only going up from here. 
+<br>Next up: **[Lab 2 — SQL Injection Vulnerability Allowing Login Bypass](lab-2-login-bypass.md)**.
 
 
 
