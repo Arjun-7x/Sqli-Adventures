@@ -2,9 +2,9 @@
 
 ![banner](banner.svg)
 
-Hi, I'm Arjun — a CSE student who decided that instead of just reading about SQL injection, I'd rather go break some databases (the legal, PortSwigger-sanctioned kind). This repo is where I dump every lab I clear on the way to actually being dangerous at this stuff: the vulnerability, the payload, the "wait, it actually worked?" moment, all of it.
+Hola!! This is Arjun. A one-man show, currently bored out of his mind reading SQLi books and decided that's not how this is gonna go. If I'm gonna learn this stuff, it's gonna be interesting — so we're going on adventures of breaking databases instead.
 
-Consider this less a portfolio and more a running diary of me learning to make `WHERE` clauses cry.
+We'll save the illegal stuff for later (kidding, mostly) — for now it's PortSwigger's labs, which are, hmm... surprisingly interesting once you actually start breaking things. Come join me with my adventures.
 
 ## Labs
 
