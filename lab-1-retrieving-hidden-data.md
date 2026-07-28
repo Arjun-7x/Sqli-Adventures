@@ -12,12 +12,15 @@ SELECT * FROM products WHERE category = 'Gifts' AND released = 1
 
 That `released = 1` part is doing quiet work — it's making sure only products the store actually wants to show get returned. Unreleased products stay hidden. The problem is, if the app just takes whatever you type into the category field and drops it straight into that query without checking it, you're not just choosing a category anymore — you're writing part of the SQL yourself.
 
+## 🎯 Target
+
+Force the app to return at least one unreleased product — bypass the `released = 1` check entirely.
+
 ## Finding the injection point
 
 The category gets passed through the URL like this:
 
 GET /filter?category=Gifts
-
 
 ![Injection point](images/lab1-step1-injection-point.png)
 
