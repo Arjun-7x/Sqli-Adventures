@@ -51,4 +51,4 @@ Same root cause as Lab 1 — unsanitized input reshaping the query — but this 
 
 ---
 
-Lab 1 cracked a vault of hidden products. Lab 2 walked straight through the front door as the admin. Next up, things get less "walk in" and more "figure out the shape of the whole database blind": **[Lab 3 — Querying the Database Type and Version on Oracle](lab-3-oracle-version.md)**.
+Lab 1 cracked a vault of hidden products. Lab 2 walked straight through the front door as the admin. Next up, things get less "walk in" and more "figure out the shape of the whole query blind": **[Lab 3 — SQL Injection UNION Attack, Determining the Number of Columns Returned by the Query](lab-3-union-column-count.md)**.
