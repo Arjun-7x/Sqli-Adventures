@@ -20,12 +20,16 @@ Log in as the `administrator` user without knowing their password.
 
 Fired up Burp Suite, turned on intercept, and submitted the login form so I could grab and modify the raw request before it reached the server.
 
+![Intercepted login request in Burp](images/lab2-step1-intercept.png)
+
 ## The bypass
 
 Instead of a normal username, I set the `username` parameter to:
 
 administrator'--
 
+
+![Modified request with the injected username](images/lab2-step2-payload.png)
 
 Here's what that does to the query:
 
@@ -45,6 +49,8 @@ No password required. If a user with that username exists, the login succeeds.
 
 Logged in as `administrator` with zero knowledge of the actual password.
 
+![Logged in as administrator](images/lab2-step3-success.png)
+
 ## Takeaway
 
 Same root cause as Lab 1 — unsanitized input reshaping the query — but this time on an authentication check instead of a data filter. It's a good reminder that this class of bug isn't confined to search boxes and filters; anywhere user input touches a SQL query is a potential way in, including the gates meant to keep people out.
@@ -52,3 +58,5 @@ Same root cause as Lab 1 — unsanitized input reshaping the query — but this 
 ---
 
 Lab 1 cracked a vault of hidden products. Lab 2 walked straight through the front door as the admin. Next up, things get less "walk in" and more "figure out the shape of the whole query blind": **[Lab 3 — SQL Injection UNION Attack, Determining the Number of Columns Returned by the Query](lab-3-union-column-count.md)**.
+
+
