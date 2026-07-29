@@ -1,4 +1,4 @@
-# Lab 9: SQL Injection Attack — Listing the Database Contents on Oracle
+# Lab 10: SQL Injection Attack — Listing the Database Contents on Oracle
 
 **Platform:** PortSwigger Web Security Academy
 
