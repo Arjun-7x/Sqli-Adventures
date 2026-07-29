@@ -17,7 +17,7 @@ First, confirmed the column layout: two columns, both capable of holding text.
 '+UNION+SELECT+'abc','def'+FROM+dual--
 
 
-![Confirming two text-capable columns via Oracle's dual table](images/lab6-step1-column-check.png)
+![Confirming two text-capable columns via Oracle's dual table](images/lab7-step1-column-check.png)
 
 `dual` is worth noting — Oracle requires every `SELECT` to reference a table, even when there's nothing real to select from. `dual` is a built-in dummy table that exists purely so a query like this has something to point at.
 
@@ -26,13 +26,13 @@ With the column layout confirmed, swapped in the real target — Oracle's `v$ver
 '+UNION+SELECT+BANNER,+NULL+FROM+v$version--
 
 
-![Payload returning the Oracle version banner](images/lab6-step2-payload.png)
+![Payload returning the Oracle version banner](images/lab7-step2-payload.png)
 
 ## Result
 
 The response came back with the full Oracle version string sitting right in the page.
 
-![Oracle version banner visible in the response](images/lab6-step3-success.png)
+![Oracle version banner visible in the response](images/lab7-step3-success.png)
 
 ## Takeaway
 
