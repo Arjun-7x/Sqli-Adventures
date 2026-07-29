@@ -1,0 +1,165 @@
+---
+layout: none
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQL Injection Diaries — Arjun</title>
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<style>
+  body { margin: 0; background: #0a0e0a; overflow-x: hidden; }
+  .hero { max-width: 900px; margin: 0 auto; padding: 60px 24px 40px; position: relative; z-index: 2; }
+  #boot { font-family: 'JetBrains Mono', monospace; color: #4ade80; font-size: 0.95rem; white-space: pre-wrap; min-height: 160px; }
+  .cursor { display: inline-block; width: 8px; height: 16px; background: #4ade80; animation: blink 1s step-end infinite; vertical-align: middle; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .intro { opacity: 0; transition: opacity 0.8s ease; margin-top: 24px; color: #c9d1c9; line-height: 1.8; font-size: 1.05rem; }
+  .intro.show { opacity: 1; }
+  .stats { display: flex; gap: 16px; margin: 32px 0; flex-wrap: wrap; opacity: 0; transition: opacity 0.8s ease 0.3s; }
+  .stats.show { opacity: 1; }
+  .stat { background: #12181280; border: 1px solid #ffffff15; border-radius: 8px; padding: 16px 20px; flex: 1; min-width: 140px; }
+  .stat-num { font-size: 1.8rem; font-weight: 700; color: #4ade80; font-family: 'JetBrains Mono', monospace; }
+  .stat-label { font-size: 0.8rem; color: #5a6a5a; margin-top: 4px; }
+  .controls { display: flex; gap: 10px; margin: 32px 0 20px; opacity: 0; transition: opacity 0.8s ease 0.5s; flex-wrap: wrap; }
+  .controls.show { opacity: 1; }
+  #search { flex: 1; min-width: 200px; background: #12181280; border: 1px solid #ffffff20; color: #c9d1c9; padding: 10px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; }
+  #search:focus { outline: none; border-color: #4ade80; }
+  .filter-btn { background: #12181280; border: 1px solid #ffffff20; color: #5a6a5a; padding: 10px 14px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+  .filter-btn.active, .filter-btn:hover { border-color: #4ade80; color: #4ade80; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; opacity: 0; transition: opacity 0.8s ease 0.6s; padding-bottom: 60px; }
+  .grid.show { opacity: 1; }
+  .card { background: #12181280; border: 1px solid #ffffff15; border-radius: 8px; padding: 18px; text-decoration: none; display: block; transition: all 0.2s; cursor: pointer; }
+  .card:hover { border-color: #4ade80; transform: translateY(-2px); }
+  .card-num { font-family: 'JetBrains Mono', monospace; color: #4ade80; font-size: 0.8rem; }
+  .card-title { color: #e5e5e5; font-size: 0.95rem; margin: 6px 0 10px; font-family: 'JetBrains Mono', monospace; line-height: 1.4; }
+  .tag { display: inline-block; font-size: 0.7rem; padding: 3px 8px; border-radius: 10px; background: #1a2e1a; color: #4ade80; border: 1px solid #4ade8040; }
+  .tag.blocked { background: #2e1a1a; color: #e57373; border-color: #e5737340; }
+  #matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.15; }
+</style>
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="hero">
+  <div id="boot"></div>
+
+  <div class="intro" id="intro">
+    Hola!! This is Arjun. A one-man show, currently bored out of his mind reading SQLi books and decided that's not how this is gonna go. If I'm gonna learn this stuff, it's gonna be interesting — so we're going on adventures of breaking databases instead.
+    <br><br>
+    We'll save the illegal stuff for later (kidding, mostly) — for now it's PortSwigger's labs, which are, hmm... surprisingly interesting once you actually start breaking things. Come join me.
+  </div>
+
+  <div class="stats" id="stats">
+    <div class="stat"><div class="stat-num">18</div><div class="stat-label">labs total</div></div>
+    <div class="stat"><div class="stat-num">16</div><div class="stat-label">fully solved</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Pro-gated</div></div>
+  </div>
+
+  <div class="controls" id="controls">
+    <input type="text" id="search" placeholder="search labs...">
+    <button class="filter-btn active" data-filter="all">all</button>
+    <button class="filter-btn" data-filter="union">union</button>
+    <button class="filter-btn" data-filter="blind">blind</button>
+    <button class="filter-btn" data-filter="misc">misc</button>
+  </div>
+
+  <div class="grid" id="grid">
+    <a class="card" data-cat="misc" href="lab-1-retrieving-hidden-data.html"><div class="card-num">LAB 01</div><div class="card-title">Retrieving hidden data</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="misc" href="lab-2-login-bypass.html"><div class="card-num">LAB 02</div><div class="card-title">Login bypass</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="union" href="lab-3-union-column-count.html"><div class="card-num">LAB 03</div><div class="card-title">UNION — column count</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="union" href="lab-4-union-text-column.html"><div class="card-num">LAB 04</div><div class="card-title">UNION — text column</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="union" href="lab-5-union-retrieve-data.html"><div class="card-num">LAB 05</div><div class="card-title">UNION — retrieve data</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="union" href="lab-6-multiple-values-column.html"><div class="card-num">LAB 06</div><div class="card-title">UNION — multiple values, one column</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="misc" href="lab-7-oracle-version.html"><div class="card-num">LAB 07</div><div class="card-title">DB fingerprint — Oracle</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="misc" href="lab-8-mysql-mssql-version.html"><div class="card-num">LAB 08</div><div class="card-title">DB fingerprint — MySQL/MSSQL</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="misc" href="lab-9-listing-contents.html"><div class="card-num">LAB 09</div><div class="card-title">Listing contents — non-Oracle</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="misc" href="lab-10-oracle-contents.html"><div class="card-num">LAB 10</div><div class="card-title">Listing contents — Oracle</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="blind" href="lab-11-conditional-responses.html"><div class="card-num">LAB 11</div><div class="card-title">Blind — conditional responses</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="blind" href="lab-12-conditional-errors.html"><div class="card-num">LAB 12</div><div class="card-title">Blind — conditional errors</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="misc" href="lab-13-visible-error-based.html"><div class="card-num">LAB 13</div><div class="card-title">Visible error-based</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="blind" href="lab-14-time-delays.html"><div class="card-num">LAB 14</div><div class="card-title">Blind — time delays</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="blind" href="lab-15-time-delay-extraction.html"><div class="card-num">LAB 15</div><div class="card-title">Blind — time-delay extraction</div><span class="tag">solved</span></a>
+    <a class="card" data-cat="blind" href="lab-16-oob-interaction.html"><div class="card-num">LAB 16</div><div class="card-title">Blind — out-of-band interaction</div><span class="tag blocked">Pro required</span></a>
+    <a class="card" data-cat="blind" href="lab-17-oob-exfiltration.html"><div class="card-num">LAB 17</div><div class="card-title">Blind — out-of-band exfiltration</div><span class="tag blocked">Pro required</span></a>
+    <a class="card" data-cat="misc" href="lab-18-xml-encoding-bypass.html"><div class="card-num">LAB 18</div><div class="card-title">Filter bypass — XML encoding</div><span class="tag">solved</span></a>
+  </div>
+</div>
+
+<script>
+const bootLines = [
+  "$ whoami",
+  "> arjun-7x",
+  "$ cat mission.txt",
+  "> break databases. document everything. get good.",
+  "$ ./init_sqli_diaries.sh",
+  "> loading 18 labs...",
+  "> done."
+];
+const bootEl = document.getElementById('boot');
+let li = 0, ci = 0, out = "";
+function typeLine() {
+  if (li >= bootLines.length) {
+    bootEl.innerHTML = out + '<span class="cursor"></span>';
+    ['intro','stats','controls','grid'].forEach(id => document.getElementById(id).classList.add('show'));
+    return;
+  }
+  const line = bootLines[li];
+  if (ci <= line.length) {
+    bootEl.innerHTML = out + line.slice(0, ci) + '<span class="cursor"></span>';
+    ci++;
+    setTimeout(typeLine, 20);
+  } else {
+    out += line + "\n";
+    li++; ci = 0;
+    setTimeout(typeLine, 200);
+  }
+}
+typeLine();
+
+const searchInput = document.getElementById('search');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.card');
+let activeFilter = 'all';
+
+function applyFilters() {
+  const q = searchInput.value.toLowerCase();
+  cards.forEach(c => {
+    const matchesCat = activeFilter === 'all' || c.dataset.cat === activeFilter;
+    const matchesSearch = c.textContent.toLowerCase().includes(q);
+    c.style.display = (matchesCat && matchesSearch) ? 'block' : 'none';
+  });
+}
+searchInput.addEventListener('input', applyFilters);
+filterBtns.forEach(btn => btn.addEventListener('click', () => {
+  filterBtns.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = btn.dataset.filter;
+  applyFilters();
+}));
+
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+const chars = "01アカサタナ";
+const fontSize = 14;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = Array(columns).fill(1);
+function draw() {
+  ctx.fillStyle = "rgba(10,14,10,0.08)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#4ade80";
+  ctx.font = fontSize + "px monospace";
+  drops.forEach((y, i) => {
+    const text = chars[Math.floor(Math.random() * chars.length)];
+    ctx.fillText(text, i * fontSize, y * fontSize);
+    if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  });
+}
+setInterval(draw, 50);
+window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+</script>
+</body>
+</html>
