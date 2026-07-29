@@ -1,7 +1,0 @@
-<svg width="700" height="140" xmlns="http://www.w3.org/2000/svg">
-  <rect width="700" height="140" fill="#0a0a0a"/>
-  <text x="20" y="45" font-family="monospace" font-size="20" fill="#00ff00">$ whoami</text>
-  <text x="20" y="70" font-family="monospace" font-size="20" fill="#00ff00">> Arjun Kanagala</text>
-  <text x="20" y="100" font-family="monospace" font-size="26" fill="#00ff00" font-weight="bold">SELECT * FROM knowledge WHERE curiosity = ∞;</text>
-  <text x="20" y="125" font-family="monospace" font-size="14" fill="#555">-- SQLi Aventures ;-) </text>
-</svg>
