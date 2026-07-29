@@ -1,3 +1,6 @@
+---
+title: "Lab 5: UNION Attack — Retrieving Data from Other Tables"
+---
 # Lab 5: SQL Injection UNION Attack — Retrieving Data from Other Tables
 
 **Platform:** PortSwigger Web Security Academy
