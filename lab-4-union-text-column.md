@@ -39,8 +39,7 @@ Found the column that accepts text without throwing an error — that's the colu
 
 ## Takeaway
 
-Not every column in a UNION SELECT is a valid landing spot for data — type mismatches will throw errors just like column-count mismatches do. Testing each position individually isolates exactly which column is usable, setting up everything needed to actually pull real data out in the next lab.
-
 ---
 
 Column count: known. Usable column: found. Now it's time to actually walk out the front door with something — real data, straight out of another table: **[Lab 5 — SQL Injection UNION Attack, Retrieving Data from Other Tables](lab-5-union-retrieve-data.md)**.
+
