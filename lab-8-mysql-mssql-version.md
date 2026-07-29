@@ -1,4 +1,4 @@
-# Lab 7: SQL Injection Attack — Querying the Database Type and Version on MySQL and Microsoft
+# Lab 8: SQL Injection Attack — Querying the Database Type and Version on MySQL and Microsoft
 
 **Platform:** PortSwigger Web Security Academy
 
@@ -42,4 +42,4 @@ Every database engine answers "what are you running?" a little differently — O
 
 ---
 
-Version confirmed. Now that the database's identity is known, it's time to stop asking about the engine and start asking about everything it's storing: **[Lab 8 — SQL Injection Attack, Listing the Database Contents on Non-Oracle Databases](lab-8-listing-contents.md)**.
+Version confirmed. Now that the database's identity is known, it's time to stop asking about the engine and start asking about everything it's storing: **[Lab 9 — SQL Injection Attack, Listing the Database Contents on Non-Oracle Databases](lab-9-listing-contents.md)**.
