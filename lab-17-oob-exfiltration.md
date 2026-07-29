@@ -1,3 +1,6 @@
+---
+title: "Lab 17: Blind SQL Injection with Out-of-Band Data Exfiltration"
+---
 # Lab 17: Blind SQL Injection with Out-of-Band Data Exfiltration
 
 **Platform:** PortSwigger Web Security Academy
