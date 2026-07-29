@@ -1,4 +1,4 @@
-# Lab 5: SQL Injection UNION Attack — Retrieving Data from Other Tables
+# Lab 6: SQL Injection UNION Attack — Retrieving Data from Other Tables
 
 **Platform:** PortSwigger Web Security Academy
 
@@ -40,6 +40,6 @@ This is the actual payoff of a UNION attack — not just proving the injection e
 
 ---
 
-Credentials: extracted. The database itself hasn't given up its identity yet, though — time to find out exactly what we're dealing with: **[Lab 6 — SQL Injection Attack, Querying the Database Type and Version on Oracle](lab-6-oracle-version.md)**.
+Credentials: extracted. The database itself hasn't given up its identity yet, though — time to find out exactly what we're dealing with: **[Lab 7 — SQL Injection Attack, Querying the Database Type and Version on Oracle](lab-7-oracle-version.md)**.
 
 
