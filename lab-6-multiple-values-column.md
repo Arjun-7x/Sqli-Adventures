@@ -1,4 +1,7 @@
-# Lab 6: SQL Injection UNION Attack — Retrieving Data from Other Tables
+---
+title: "Lab 6: UNION Attack — Retrieving Multiple Values in a Single Column"
+---
+# Lab 6: SQL injection UNION attack, retrieving multiple values in a single column
 
 **Platform:** PortSwigger Web Security Academy
 
