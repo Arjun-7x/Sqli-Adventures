@@ -1,3 +1,6 @@
+---
+title: "Lab 9: Listing Database Contents on Non-Oracle Databases"
+---
 # Lab 9: SQL Injection Attack — Listing the Database Contents on Non-Oracle Databases
 
 **Platform:** PortSwigger Web Security Academy
