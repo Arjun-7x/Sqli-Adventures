@@ -1,3 +1,6 @@
+---
+title: "Lab 14: Blind SQL Injection with Time Delays"
+---
 # Lab 14: Blind SQL Injection with Time Delays
 
 **Platform:** PortSwigger Web Security Academy
