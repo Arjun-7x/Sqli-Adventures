@@ -4,7 +4,7 @@
 
 ## What's going on here
 
-Lab 10 got a true/false signal from a visible "Welcome back" message. This one takes that away too — no message changes, no obvious content difference. The only thing left to read is whether the server throws an error at all. If a condition can be made to trigger an error only when true, that error itself becomes the signal.
+Lab 11 got a true/false signal from a visible "Welcome back" message. This one takes that away too — no message changes, no obvious content difference. The only thing left to read is whether the server throws an error at all. If a condition can be made to trigger an error only when true, that error itself becomes the signal.
 
 ## 🎯 Target
 
@@ -22,7 +22,8 @@ TrackingId=xyz''
 
 Error disappeared — confirms the input is landing inside a SQL string.
 
-![Error with one quote vs no error with two](images/lab12-step1-quote-test.png)
+![Error with one quote](images/lab12-step1-quote1-test.png)
+![No error with two](images/lab12-step1-quote2-test.png)
 
 **Confirming it's specifically a SQL error, not something else:**
 
@@ -48,21 +49,29 @@ No error — condition false, divide-by-zero never ran.
 
 That's the whole mechanism: wrap any condition in a `CASE`, make the true branch divide by zero, and the presence of an HTTP 500 becomes a readable true/false bit.
 
-**Confirming the target and finding password length**, same approach as Lab 10 but using the error-based signal instead of a visible message — confirmed `administrator` exists, then tested `LENGTH(password)>N` for increasing `N` in Repeater until the error stopped, landing on 20 characters.
+**Confirming the target exists**, same as Lab 11 — confirmed `administrator` exists using the error-based signal instead of a visible message.
+
+**Finding the password length using Intruder**, same approach as Lab 11:
+
+TrackingId=xyz'||(SELECT CASE WHEN (username='administrator' AND LENGTH(password)>§N§) THEN TO_CHAR(1/0) ELSE '' END FROM users)||'
+
+
+Ran this through Intruder with a single payload position on `N`, a numeric list, filtering by HTTP status 500 instead of a grep match. The status flipped from 500 to 200 right at 20 characters.
+
+![Intruder length check filtered by 500 status](images/lab12-step3-length-check.png)
 
 **Extracting the password — Cluster Bomb + brute force, since simple list alone wasn't going to cut it fast enough:**
 
 TrackingId=xyz'||(SELECT CASE WHEN SUBSTR(password,§1§,1)='§a§' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'
 
 
-![Intruder Cluster Bomb setup with offset and character positions](images/lab12-step3-intruder-setup.png)
+![Intruder Cluster Bomb setup with offset and character positions](images/lab12-step4-intruder-setup.png)
 
 - **Position 1** — offsets `1` through `20`
 - **Position 2** — lowercase letters and digits
 
 Ran the attack, filtered results by **HTTP status 500** instead of a grep match this time — the error itself is the tell, not a keyword in the body. Reading the 500-status rows in offset order reconstructed the full password.
 
-![Intruder results filtered by 500 status across offsets](images/lab12-step4-results.png)
 
 ## Result
 
