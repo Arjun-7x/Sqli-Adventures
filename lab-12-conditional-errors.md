@@ -1,3 +1,6 @@
+---
+title: "Lab 12: Blind SQL Injection with Conditional Errors"
+---
 # Lab 12: Blind SQL Injection with Conditional Errors
 
 **Platform:** PortSwigger Web Security Academy
