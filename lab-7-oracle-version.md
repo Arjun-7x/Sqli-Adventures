@@ -1,3 +1,6 @@
+---
+title: "Lab 7: Querying Database Type and Version on Oracle"
+---
 # Lab 7: SQL Injection Attack — Querying the Database Type and Version on Oracle
 
 **Platform:** PortSwigger Web Security Academy
