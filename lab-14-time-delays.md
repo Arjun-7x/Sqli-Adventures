@@ -23,8 +23,6 @@ TrackingId=x'||pg_sleep(10)--
 
 Sent the request and watched the clock.
 
-![Response timing showing a 10-second delay](images/lab14-step2-delay-observed.png)
-
 ## Result
 
 The response took 10 seconds to come back — proof that arbitrary SQL was executing inside the query, even with zero visible output, zero error, and zero content difference to inspect.
