@@ -1,3 +1,6 @@
+---
+title: "Lab 8: Querying Database Type and Version on MySQL and Microsoft"
+---
 # Lab 8: SQL Injection Attack — Querying the Database Type and Version on MySQL and Microsoft
 
 **Platform:** PortSwigger Web Security Academy
