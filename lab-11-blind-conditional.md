@@ -1,3 +1,6 @@
+---
+title: "Lab 11: Blind SQL Injection with Conditional Responses"
+---
 # Lab 11: Blind SQL Injection with Conditional Responses
 
 **Platform:** PortSwigger Web Security Academy
