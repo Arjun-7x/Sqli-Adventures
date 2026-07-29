@@ -1,4 +1,4 @@
-# Lab 6: SQL Injection Attack — Querying the Database Type and Version on Oracle
+# Lab 7: SQL Injection Attack — Querying the Database Type and Version on Oracle
 
 **Platform:** PortSwigger Web Security Academy
 
@@ -40,4 +40,4 @@ Fingerprinting the database isn't the flashy part of an attack, but it's often t
 
 ---
 
-Oracle's given up its version. Next: same goal, different engines — MySQL and Microsoft SQL Server each have their own way of answering this question: **[Lab 7 — SQL Injection Attack, Querying the Database Type and Version on MySQL and Microsoft](lab-7-mysql-mssql-version.md)**.
+Oracle's given up its version. Next: same goal, different engines — MySQL and Microsoft SQL Server each have their own way of answering this question: **[Lab 8 — SQL Injection Attack, Querying the Database Type and Version on MySQL and Microsoft](lab-8-mysql-mssql-version.md)**.
