@@ -1,3 +1,6 @@
+---
+title: "Lab 4: UNION Attack — Finding a Column Containing Text"
+---
 # Lab 4: SQL Injection UNION Attack — Finding a Column Containing Text
 
 **Platform:** PortSwigger Web Security Academy
