@@ -17,14 +17,14 @@ First, confirmed the column layout for this lab: two columns total, only one of 
 '+UNION+SELECT+NULL,'abc'--
 
 
-![Confirming two columns, one text-capable](images/lab5-step1-column-check.png)
+![Confirming two columns, one text-capable](images/lab6-step1-column-check.png)
 
 With that confirmed, swapped the placeholder for a real query against the `users` table — pulling `username` and `password` concatenated together into that single text column, separated by `~` so they'd be easy to tell apart in the response:
 
 '+UNION+SELECT+NULL,username||'~'||password+FROM+users--
 
 
-![Payload retrieving username and password pairs](images/lab5-step2-payload.png)
+![Payload retrieving username and password pairs](images/lab6-step2-payload.png)
 
 `||` is string concatenation — it's how two separate column values (`username` and `password`) get squeezed into the one column slot that actually renders as text on the page.
 
@@ -32,7 +32,7 @@ With that confirmed, swapped the placeholder for a real query against the `users
 
 The response came back listing usernames and passwords straight from the `users` table, each pair separated by `~`.
 
-![Usernames and passwords visible in the response](images/lab5-step3-success.png)
+![Usernames and passwords visible in the response](images/lab6-step3-success.png)
 
 ## Takeaway
 
@@ -41,5 +41,3 @@ This is the actual payoff of a UNION attack — not just proving the injection e
 ---
 
 Credentials: extracted. The database itself hasn't given up its identity yet, though — time to find out exactly what we're dealing with: **[Lab 7 — SQL Injection Attack, Querying the Database Type and Version on Oracle](lab-7-oracle-version.md)**.
-
-
