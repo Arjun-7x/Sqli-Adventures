@@ -22,7 +22,8 @@ TrackingId=xyz' AND '1'='2
 
 "Welcome back" disappeared — condition false.
 
-![Boolean true vs false responses side by side](images/lab11-step1-boolean-test.png)
+![Boolean true response side](images/lab11-step1-boolean-true.png)
+![Boolean false response side](images/lab11-step1-boolean-false.png)
 
 That confirmed the app was silently evaluating my injected condition and changing behavior based on it — even with zero data shown.
 
@@ -36,7 +37,7 @@ TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator')='a
 
 True — an `administrator` user exists.
 
-![Confirming the users table and administrator account both exist](images/lab11-step2-target-confirmed.png)
+![Confirming the user administrator account](images/lab11-step2-target-confirmed.png)
 
 **Finding the password length — using Intruder instead of manual Repeater changes:**
 
@@ -45,21 +46,23 @@ TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator' AND LE
 
 Sent this to Intruder with a single payload position on `N`, loaded with a numeric list from `1` to `22`, and grepped for `Welcome back`. Instead of manually editing and resending 20+ times, one Intruder run showed exactly where the condition flipped from true to false — landing at 20 characters.
 
-![Intruder results showing the length check flipping false at 20](images/lab11-step3-length-check.png)
+![length-Payload-setup](images/lab11-step3-length-check.png)
 
 **Extracting every character in one shot with Cluster Bomb:**
 
 TrackingId=xyz' AND (SELECT SUBSTRING(password,§1§,1) FROM users WHERE username='administrator')='§a§'
 
 
-![Intruder set up with two payload positions for Cluster Bomb](images/lab11-step4-intruder-setup.png)
+![Intruder set up for 1st positions for Cluster Bomb](images/lab11-step4-intruder1-setup.png)
+
+![Intruder set up for 2nd positions for Cluster Bomb](images/lab11-step4-intruder2-setup.png)
 
 - **Position 1** — the character offset, a numbered list from `1` to `20`
 - **Position 2** — a brute-force payload set of lowercase letters and digits
 
 Set the **Grep - Match** rule to flag `Welcome back` in the response, same as the length check. Cluster Bomb runs *every combination* of both positions — every offset against every possible character — instead of moving through them one at a time.
 
-![Intruder results grid, filtered for true matches across offsets and characters](images/lab11-step5-results.png)
+![Intruder setting for grep-match](images/lab11-step5-grep-match.png)
 
 Reading down the ticked rows in offset order reconstructed the full 20-character password.
 
