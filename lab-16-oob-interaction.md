@@ -1,3 +1,6 @@
+---
+title: "Lab 16: Blind SQL Injection with Out-of-Band Interaction"
+---
 # Lab 16: Blind SQL Injection with Out-of-Band Interaction
 
 **Platform:** PortSwigger Web Security Academy
