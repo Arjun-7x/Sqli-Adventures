@@ -1,3 +1,6 @@
+---
+title: "Lab 15: Blind SQL Injection with Time Delays and Information Retrieval"
+---
 # Lab 15: Blind SQL Injection with Time Delays and Information Retrieval
 
 **Platform:** PortSwigger Web Security Academy
