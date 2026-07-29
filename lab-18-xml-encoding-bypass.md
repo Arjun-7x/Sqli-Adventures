@@ -1,3 +1,6 @@
+---
+title: "Lab 18: SQL Injection with Filter Bypass via XML Encoding"
+---
 # Lab 18: SQL Injection with Filter Bypass via XML Encoding
 
 **Platform:** PortSwigger Web Security Academy
