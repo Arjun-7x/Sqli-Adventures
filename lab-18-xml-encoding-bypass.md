@@ -64,4 +64,6 @@ Filters that block on literal keyword matching are only as strong as their blind
 
 ---
 
-That's the full path — from a single quote breaking a category filter, through UNION extraction, blind inference by message, error, and time, out-of-band exfiltration, and finally slipping past a WAF entirely. Eighteen labs, one database at a time, giving up everything it had.
+And that's the adventure, wrapped. Eighteen doors, eighteen different ways in — a single quote that broke a filter, a UNION that walked out with usernames and passwords, blind guesses turned into certainty one bit at a time, a database that phoned home without saying a word, and finally, a WAF that never saw it coming.
+
+The database gave up everything it had. Turns out it never stood a chance.
