@@ -1,3 +1,6 @@
+---
+title: "Lab 1: Retrieving Hidden Data"
+---
 # Lab 1: SQL Injection in WHERE Clause — Retrieving Hidden Data
 
 **Platform:** PortSwigger Web Security Academy
