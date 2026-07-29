@@ -1,4 +1,4 @@
-# Lab 8: SQL Injection Attack — Listing the Database Contents on Non-Oracle Databases
+# Lab 9: SQL Injection Attack — Listing the Database Contents on Non-Oracle Databases
 
 **Platform:** PortSwigger Web Security Academy
 
@@ -54,7 +54,7 @@ Full database schema mapped from nothing, credentials extracted, logged in as `a
 
 ---
 
-Non-Oracle databases just gave up their entire schema. Oracle doesn't expose `information_schema` the same way, though — its metadata lives somewhere else entirely: **[Lab 9 — SQL Injection Attack, Listing the Database Contents on Oracle](lab-9-oracle-contents.md)**.
+Non-Oracle databases just gave up their entire schema. Oracle doesn't expose `information_schema` the same way, though — its metadata lives somewhere else entirely: **[Lab 10 — SQL Injection Attack, Listing the Database Contents on Oracle](lab-10-oracle-contents.md)**.
 
 
 
