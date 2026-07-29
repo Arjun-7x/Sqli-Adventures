@@ -71,4 +71,4 @@ Blind SQLi means the database never hands you anything directly — every bit of
 
 ---
 
-Conditional responses gave away true/false through a visible message. Next: what happens when even that message disappears, and the only signal left is whether the server throws an error at all: **[Lab 11 — Blind SQL Injection with Conditional Errors](lab-11-conditional-errors.md)**.
+Conditional responses gave away true/false through a visible message. Next: what happens when even that message disappears, and the only signal left is whether the server throws an error at all: **[Lab 12 — Blind SQL Injection with Conditional Errors](lab-12-conditional-errors.md)**.
