@@ -1,3 +1,6 @@
+---
+title: "Lab 13: Visible Error-Based SQL Injection"
+---
 # Lab 13: Visible Error-Based SQL Injection
 
 **Platform:** PortSwigger Web Security Academy
