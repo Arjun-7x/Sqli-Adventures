@@ -1,3 +1,6 @@
+---
+title: "Lab 3: UNION Attack — Determining Column Count"
+---
 # Lab 3: SQL Injection UNION Attack — Determining the Number of Columns
 
 **Platform:** PortSwigger Web Security Academy
