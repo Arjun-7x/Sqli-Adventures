@@ -41,7 +41,7 @@ Found the username and password columns among the results (again, randomized nam
 
 '+UNION+SELECT+username_abcdef,+password_abcdef+FROM+users_abcdef--
 
-![Extracted usernames and passwords from the identified table](images/lab8-step4-credentials.png)
+![Extracted usernames and passwords from the identified table](images/lab9-step4-credentials.png)
 
 Located `administrator`'s row, grabbed the password, and logged in with it.
 
