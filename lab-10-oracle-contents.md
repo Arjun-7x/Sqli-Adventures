@@ -54,4 +54,4 @@ Full Oracle schema mapped, credentials extracted, logged in as `administrator`.
 
 ---
 
-Every database in this path has now handed over its full contents through a UNION attack — tables, columns, credentials, all of it. But UNION only works when the app actually shows query results on the page. What happens when it doesn't show anything at all, and the only signal is true or false? Time to go blind: **[Lab 10 — Blind SQL Injection with Conditional Responses](lab-10-blind-conditional.md)**.
+Every database in this path has now handed over its full contents through a UNION attack — tables, columns, credentials, all of it. But UNION only works when the app actually shows query results on the page. What happens when it doesn't show anything at all, and the only signal is true or false? Time to go blind: **[Lab 11 — Blind SQL Injection with Conditional Responses](lab-11-blind-conditional.md)**.
